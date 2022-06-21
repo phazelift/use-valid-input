@@ -1,0 +1,24 @@
+{
+  "name": "use-valid-input",
+  "author": "dennis raymondo van der sluis",
+  "version": "0.1.0",
+  "description": "React hook for easy and solid input validation",
+  "main": "use-valid-input.min.js",
+  "scripts": {
+    "build": "npm run uglify",
+    "uglify": "terser use-valid-input.js -c -m -o use-valid-input.min.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "assign-variable": "^0.4.0",
+    "react": "^18.2.0",
+    "string-spec": "^0.2.0",
+    "types.js": "^1.9.5"
+  },
+  "keywords": [
+    "input",
+    "string",
+    "validation",
+    "specification"
+  ]
+}
