@@ -41,7 +41,7 @@ const assignSettings = (settings, spec) => {
 
 
 const useValidInput = (spec, _settings) => {
-  const [settings, changeSettings]   = useState( assignSettings(_settings, spec) );
+  const [settings]                   = useState( assignSettings(_settings, spec) );
   const input                        = useRef( null );
   const checkTrimInputLength         = useCallback( () => settings.trimOnBlur && (input.current.value= input.current.value.trim()), [] );
   const isFocused                    = useCallback( () => (document.activeElement === input.current), [] );

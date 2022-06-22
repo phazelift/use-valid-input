@@ -1,7 +1,7 @@
 {
   "name": "use-valid-input",
   "author": "dennis raymondo van der sluis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React hook for easy and solid input validation",
   "main": "use-valid-input.min.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "types.js": "^1.9.5"
   },
   "keywords": [
+	 "form",
     "input",
     "string",
     "validation",

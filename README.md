@@ -21,22 +21,32 @@ import useValidInput, { StringSpec } from 'use-valid-input'
 
 // define a validation spec using StringSpec
 const tUser = new StringSpec({
-	min: 3,
-	max: 24,
-	include: '_-abcdefghijklmnopqrstuvwxyz',
+  min: 3,
+  max: 24,
+  include: '_-abcdefghijklmnopqrstuvwxyz',
 });
 
 
-const UserInput = () => {
-	const [validation, attributes] = useValidInput(tUser);
-	const error = validation.error ? <div>error: {validation.error}</div> : null;
+const UserInput = ( {onValidate} ) => {
+  const [validation, attributes] = useValidInput(tUser, {onValidate});
+  const error = validation.error ? <div>error: {validation.error}</div> : null;
+  return (
+    <div>
+      <input {...attributes}/>
+      { error }
+    </div>
+  );
+};
 
-	return (
-		<div>
-			<input {...attributes}/>
-			{ error }
-		</div>
-	);
+
+const App = () => {
+  const [validUser, setValidUser] = useState(false);
+  return (
+    <div>
+      <UserInput onValidate={ (validation) => setValidUser(validation.valid) }/>
+      <input type='button' value='submit' disabled={ !validUser }/>
+    </div>
+  );
 };
 ```
 
@@ -101,11 +111,13 @@ const AgeInput = ( {onDone, onValidate} ) => {
 
 const App = () => {
   // onDone is only called when validation.entered becomes true
+  const handleAgeDone = (validation) => console.log(validation);
+  // onValidate is called on every keyboard event,  on focus/blur and on control.setValue()
   const handleAgeValidation = (validation) => console.log(validation);
   return (
-    <AgeInput onDone={ handleAgeValidation } onValidate={ handleAgeValidation }/>
+    <AgeInput onDone={ handleAgeDone } onValidate={ handleAgeValidation }/>
   );
-}
+};
 
 ```
 ---
